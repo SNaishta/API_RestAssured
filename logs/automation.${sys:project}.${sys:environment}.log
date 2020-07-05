@@ -8,3 +8,9 @@
 2020-07-05T12:05:01,010 [main] INFO (GetCharacters.java:24) -  Test case to validate all characters have the key ID using Hamcrest Library 
 2020-07-05T12:05:03,127 [main] INFO (GetCharacters.java:37) -  Test case to validate the response by ways of schema validation 
 2020-07-05T12:05:06,406 [main] INFO (CompareWithWeb.java:22) -  Test case to validate the count of available comics on webpage and from Api have same count 
+2020-07-05T19:51:35,917 [main] INFO (GetCharacters.java:24) -  Test case to validate all characters have the key ID using Hamcrest Library 
+2020-07-05T19:52:26,561 [main] INFO (GetCharacters.java:24) -  Test case to validate all characters have the key ID using Hamcrest Library 
+2020-07-05T19:52:45,375 [main] INFO (GetCharacters.java:63) - Test case to validate unauthorised request code when the endpoint is incorrect
+2020-07-05T19:52:46,248 [main] INFO (GetCharacters.java:49) -  Test case to validate the value in getCopyright filed is as expected using POJO classes
+2020-07-05T19:52:47,429 [main] INFO (GetCharacters.java:24) -  Test case to validate all characters have the key ID using Hamcrest Library 
+2020-07-05T19:52:49,561 [main] INFO (GetCharacters.java:37) -  Test case to validate the response by ways of schema validation 

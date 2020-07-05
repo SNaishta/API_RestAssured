@@ -27,7 +27,7 @@ public class GetCharacters extends SpecHelper {
                 spec(requestSpecification).
                 when().
                 get(GET_ALL_CHARACTERS).
-                then().
+                then().log().status().
                 body("data.results[0].name", equalTo("3-D Man")).
                 spec(responseSpecification.response().body("data.results", everyItem(hasKey("id"))));
     }
@@ -40,7 +40,7 @@ public class GetCharacters extends SpecHelper {
                 spec(requestSpecification).
                 when().
                 get(GET_ALL_CHARACTERS).
-                then().
+                then().log().status().
                 body(matchesJsonSchemaInClasspath("jsonSchema.json"));
     }
 
@@ -52,7 +52,7 @@ public class GetCharacters extends SpecHelper {
                 spec(requestSpecification).
                 when().
                 get(GET_UNIQUE_CHARACTER).
-                then().
+                then().log().status().
                 contentType(ContentType.JSON).extract().response();
         Characters characters = response.as(Characters.class, ObjectMapperType.GSON);
         Assert.assertEquals(characters.getCopyright(), "© 2020 MARVEL");
@@ -64,7 +64,7 @@ public class GetCharacters extends SpecHelper {
 
         given().spec(requestSpecification).
                 queryParam("apikey", "INVALID_API_KEY").
-                when().get(GET_UNIQUE_CHARACTER).then().assertThat().statusCode(401);
+                when().get(GET_UNIQUE_CHARACTER).then().assertThat().statusCode(401).log().status();
     }
 }
 
