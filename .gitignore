@@ -1,0 +1,8 @@
+target/*
+test-output/*
+.idea/*
+*.iml
+*.iws
+.git/
+*.DS_STORE
+sauceDemoAssessment.iml

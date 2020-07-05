@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN">
+    <appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{%d{HH:mm:ss.SSS} %level - %m%n}"/>
+        </Console>
+        <File name="logFile" fileName="${sys:logFolder:-logs/}automation.${sys:project}.${sys:environment}.log">
+            <PatternLayout pattern="%d{ISO8601} [%t] %level (%F:%L) - %m%n"/>
+        </File>
+    </appenders>
+
+    <loggers>
+        <root level="debug">
+            <appender-ref ref="console" />
+            <appender-ref ref="logFile" />
+        </root>
+    </loggers>
+</configuration>
