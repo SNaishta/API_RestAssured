@@ -27,12 +27,13 @@ export M2=$M2_HOME/bin
 export MARVEL_PUBLIC_KEY=YOURAPIKEY&&
 export MARVEL_PRIVATE_KEY=YOURPRIVATEKEY
 
-Clone or download the project from Github Link ->
+Clone or download the project from Github Link -> https://github.com/SNaishta/API_RestAssured
 
 Running the scripts from terminal from project path 
 mvn clean verify -PRegressionSuite
 
+Reports can be found in 
+projectDirectory/target/surefire-reports/emailable-report.html 
 
-Test execution snapshot
-
-
+Exception log can be found in 
+projectDirectory/target/logs
