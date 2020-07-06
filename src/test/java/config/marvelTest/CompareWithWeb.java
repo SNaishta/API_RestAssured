@@ -2,7 +2,6 @@ package config.marvelTest;
 
 import config.bin.Characters;
 import config.common.SpecHelper;
-import io.restassured.response.Response;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -10,8 +9,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static config.constant.Path.GET_UNIQUE_CHARACTER;
 import static io.restassured.RestAssured.*;
@@ -24,7 +21,7 @@ public class CompareWithWeb extends SpecHelper {
         Characters characters =
                 given().
                         spec(requestSpecification).
-                        pathParam("characterId", 1017100).
+                        pathParam("characterId", 1010699).
                         when().
                         get(GET_UNIQUE_CHARACTER).as(Characters.class);
 
@@ -39,15 +36,11 @@ public class CompareWithWeb extends SpecHelper {
         try {
             Document doc = Jsoup.connect(url).timeout(0).get();
             Elements temp = doc.select("span");
-            Pattern p = Pattern.compile("\\d+");
-            Matcher m = p.matcher(temp.get(1).text());
-            while (m.find()) {
-                return Integer.parseInt(m.group());
+            String countFromWeb = temp.get(1).text().replaceAll("\\D+", "");
+            return Integer.parseInt(countFromWeb.substring(Math.max(countFromWeb.length()-2,0)));
+            } catch(IOException e){
+                e.printStackTrace();
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return 0;
+            return 0;
     }
 }
