@@ -2,6 +2,7 @@ package config.marvelTest;
 
 import config.bin.Characters;
 import config.common.SpecHelper;
+import io.restassured.response.Response;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -23,6 +24,7 @@ public class CompareWithWeb extends SpecHelper {
         Characters characters =
                 given().
                         spec(requestSpecification).
+                        pathParam("characterId", 1017100).
                         when().
                         get(GET_UNIQUE_CHARACTER).as(Characters.class);
 

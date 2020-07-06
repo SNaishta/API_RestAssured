@@ -33,7 +33,13 @@ Running the scripts from terminal from project path
 mvn clean verify -PRegressionSuite
 
 Reports can be found in 
-projectDirectory/target/surefire-reports/emailable-report.html 
+projectDirectory/target/surefire-reports/emailable-report.html
+/target/surefire-reports/Regression Suite/RestAssured Test.html
 
 Exception log can be found in 
 projectDirectory/target/logs
+
+
+Good Reads:
+https://blog.overops.com/the-ultimate-json-library-json-simple-vs-gson-vs-jackson-vs-json/
+https://github.com/rest-assured/rest-assured/wiki/Usage#json-example
