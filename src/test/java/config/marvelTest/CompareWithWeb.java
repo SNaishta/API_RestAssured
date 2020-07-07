@@ -20,7 +20,7 @@ public class CompareWithWeb extends SpecHelper {
         logger.info(" Test case to validate the count of available comics on webpage and from Api have same count ");
         Characters characters =
                 given().
-                        spec(requestSpecification).
+                        spec(validAPI_RequestSpec).
                         pathParam("characterId", 1010699).
                         when().
                         get(GET_UNIQUE_CHARACTER).as(Characters.class);

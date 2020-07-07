@@ -29,7 +29,7 @@ public class GetCharacters extends SpecHelper {
         logger.info(" Test case to validate all characters have the key ID using Hamcrest Library ");
 
         given().
-                spec(requestSpecification).
+                spec(validAPI_RequestSpec).
                 when().
                 get(GET_ALL_CHARACTERS).
                 then().log().status().
@@ -42,7 +42,7 @@ public class GetCharacters extends SpecHelper {
         logger.info(" Test case to validate the response by ways of schema validation ");
 
         given().
-                spec(requestSpecification).
+                spec(validAPI_RequestSpec).
                 when().
                 get(GET_ALL_CHARACTERS).
                 then().log().status().time(lessThan(2L), SECONDS).
@@ -54,7 +54,7 @@ public class GetCharacters extends SpecHelper {
         logger.info(" Test case to validate the value in getCopyright filed is as expected using POJO classes");
 
         Response response = given().
-                spec(requestSpecification).
+                spec(validAPI_RequestSpec).
                 pathParam("characterId", 1017100).
                 when().
                 get(GET_UNIQUE_CHARACTER).
@@ -72,16 +72,15 @@ public class GetCharacters extends SpecHelper {
     public void InvalidEndpointAPIKey() {
         logger.info("Test case to validate unauthorised request code when the endpoint is incorrect");
 
-        given().spec(requestSpecification).pathParam("characterId", 1017100).
-                queryParam("apikey", "INVALID_API_KEY").
-                when().get(GET_UNIQUE_CHARACTER).then().assertThat().statusCode(401).log().status();
+        given().spec(inValidAPI_RequestSpec).
+                when().get(GET_ALL_CHARACTERS).then().assertThat().statusCode(401).log().status();
     }
 
     @Test
     public void extractMapOfElementsWithFind() {
         logger.info("Test case to display Full map of elements for that specific is using Find{it} /Groovy GPATH ");
 
-        Response response =  given().spec(requestSpecification).when().get(GET_ALL_CHARACTERS);
+        Response response =  given().spec(validAPI_RequestSpec).when().get(GET_ALL_CHARACTERS);
         Map<String, ?> AllCharacters = response.path("data.results.find {it.id == 1011334}");
         System.out.println("information of characeter with id = 1011334  : " +  AllCharacters);
     }
@@ -90,7 +89,7 @@ public class GetCharacters extends SpecHelper {
     public void extractNameForSpecificIDWithFind() {
         logger.info("Test case to view individual value of the map using the Map Find{it } ");
 
-        Response response =  given().spec(requestSpecification).when().get(GET_ALL_CHARACTERS);
+        Response response =  given().spec(validAPI_RequestSpec).when().get(GET_ALL_CHARACTERS);
         String characterName = response.path("data.results.find {it.id == 1011334}.name");
         System.out.println(" Name of the character with id = 1011334 :  " + characterName);
     }
@@ -99,7 +98,7 @@ public class GetCharacters extends SpecHelper {
     public void extractListOfNameWithIDGreaterThanFindALL() {
         logger.info("Test case to view name of the character with id > 1011334 with FindAll ");
 
-        Response response =  given().spec(requestSpecification).when().get(GET_ALL_CHARACTERS);
+        Response response =  given().spec(validAPI_RequestSpec).when().get(GET_ALL_CHARACTERS);
         List<String> characterName = response.path("data.results.findAll {it.id >= 1011334}.name");
         System.out.println(" Name of the character with id > 1011334 :  " + characterName);
     }
@@ -108,7 +107,7 @@ public class GetCharacters extends SpecHelper {
     public void extractListOfNameWithMaxId() {
         logger.info("Test case to view name of the character with highest id with max keyword ");
 
-        Response response =  given().spec(requestSpecification).when().get(GET_ALL_CHARACTERS);
+        Response response =  given().spec(validAPI_RequestSpec).when().get(GET_ALL_CHARACTERS);
         String characterName = response.path("data.results.max {it.id}.name");
         System.out.println(" Name of the character with id > 1011334 :  " + characterName);
     }
