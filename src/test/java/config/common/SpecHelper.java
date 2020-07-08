@@ -38,11 +38,11 @@ public class SpecHelper {
                 build();
         RestAssured.requestSpecification = inValidAPI_RequestSpec;
 
+
         RestAssured.responseSpecification = new ResponseSpecBuilder().
                 expectContentType(ContentType.JSON).
                 build();
     }
-
 }
 
 

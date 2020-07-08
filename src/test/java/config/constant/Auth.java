@@ -16,6 +16,8 @@ public class Auth {
     private static final String MARVEL_PRIVATE_KEY = System.getenv("MARVEL_PRIVATE_KEY");
     public static final String TIMESTAMP = "timestamp"; //add any string
     private static final String CONCATINATED_INPUT = TIMESTAMP + MARVEL_PRIVATE_KEY + MARVEL_API_KEY;
+    public static final String MARVEL_NEWCODE = System.getenv("MARVEL_HASHCODE");
+    public static final String hashcode = "e930fc737336d4041a6cc1d10eb11ca5";
 
     public static String getHashCode() {
         RequestSpecification authRequestSpec = new RequestSpecBuilder().setBaseUri(HASHIFY_BASE_URI).addQueryParam("value", CONCATINATED_INPUT).build();

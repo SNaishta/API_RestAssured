@@ -91,19 +91,6 @@
             <version>2.9.9</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/info.cukes/cucumber-java -->
-        <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>1.2.5</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-testng</artifactId>
-            <version>5.7.0</version>
-        </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
@@ -135,27 +122,6 @@
                                 <suiteXmlFile>TestNgFunctional-suite.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>net.masterthought</groupId>
-                        <artifactId>maven-cucumber-reporting</artifactId>
-                        <version>3.11.0</version>
-                        <executions>
-                            <execution>
-                                <id>execution</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>generate</goal>
-                                </goals>
-                                <configuration>
-                                    <projectName>CucumberReport</projectName>
-                                    <outputDirectory>${project.build.directory}/cucumber-reports/</outputDirectory>
-                                    <cucumberOutput>${project.build.directory}/cucumber-parallel/</cucumberOutput>
-                                    <parallelTesting>true</parallelTesting>
-                                    <checkBuildResult>false</checkBuildResult>
-                                </configuration>
-                            </execution>
-                        </executions>
                     </plugin>
                 </plugins>
             </build>

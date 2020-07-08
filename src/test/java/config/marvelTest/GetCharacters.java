@@ -46,7 +46,7 @@ public class GetCharacters extends SpecHelper {
                 when().
                 get(GET_ALL_CHARACTERS).
                 then().log().status().time(lessThan(2L), SECONDS).
-        body(matchesJsonSchemaInClasspath("jsonSchema.json"));
+                body(matchesJsonSchemaInClasspath("jsonSchema.json"));
     }
 
     @Test()
@@ -61,8 +61,8 @@ public class GetCharacters extends SpecHelper {
                 then().log().status().
                 contentType(ContentType.JSON).extract().response();
 
-            Characters characters = response.as(Characters.class, ObjectMapperType.GSON);
-            Assert.assertEquals(characters.getCopyright(), "© 2020 MARVEL");
+        Characters characters = response.as(Characters.class, ObjectMapperType.GSON);
+        Assert.assertEquals(characters.getCopyright(), "© 2020 MARVEL");
 
         Characters character = response.body().as(Characters.class);
         Assert.assertEquals(character.getStatus(), "Ok");
@@ -80,16 +80,16 @@ public class GetCharacters extends SpecHelper {
     public void extractMapOfElementsWithFind() {
         logger.info("Test case to display Full map of elements for that specific is using Find{it} /Groovy GPATH ");
 
-        Response response =  given().spec(validAPI_RequestSpec).when().get(GET_ALL_CHARACTERS);
+        Response response = given().spec(validAPI_RequestSpec).when().get(GET_ALL_CHARACTERS);
         Map<String, ?> AllCharacters = response.path("data.results.find {it.id == 1011334}");
-        System.out.println("information of characeter with id = 1011334  : " +  AllCharacters);
+        System.out.println("information of characeter with id = 1011334  : " + AllCharacters);
     }
 
     @Test
     public void extractNameForSpecificIDWithFind() {
         logger.info("Test case to view individual value of the map using the Map Find{it } ");
 
-        Response response =  given().spec(validAPI_RequestSpec).when().get(GET_ALL_CHARACTERS);
+        Response response = given().spec(validAPI_RequestSpec).when().get(GET_ALL_CHARACTERS);
         String characterName = response.path("data.results.find {it.id == 1011334}.name");
         System.out.println(" Name of the character with id = 1011334 :  " + characterName);
     }
@@ -98,7 +98,7 @@ public class GetCharacters extends SpecHelper {
     public void extractListOfNameWithIDGreaterThanFindALL() {
         logger.info("Test case to view name of the character with id > 1011334 with FindAll ");
 
-        Response response =  given().spec(validAPI_RequestSpec).when().get(GET_ALL_CHARACTERS);
+        Response response = given().spec(validAPI_RequestSpec).when().get(GET_ALL_CHARACTERS);
         List<String> characterName = response.path("data.results.findAll {it.id >= 1011334}.name");
         System.out.println(" Name of the character with id > 1011334 :  " + characterName);
     }
@@ -107,7 +107,7 @@ public class GetCharacters extends SpecHelper {
     public void extractListOfNameWithMaxId() {
         logger.info("Test case to view name of the character with highest id with max keyword ");
 
-        Response response =  given().spec(validAPI_RequestSpec).when().get(GET_ALL_CHARACTERS);
+        Response response = given().spec(validAPI_RequestSpec).when().get(GET_ALL_CHARACTERS);
         String characterName = response.path("data.results.max {it.id}.name");
         System.out.println(" Name of the character with id > 1011334 :  " + characterName);
     }
